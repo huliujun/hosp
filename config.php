@@ -1,7 +1,7 @@
 <?php
 //public $con;
-//ini_set("display_errors", "On");
-  //  error_reporting(E_ALL | E_STRICT);
+ini_set("display_errors", "On");
+error_reporting(E_ALL | E_STRICT);
 //error_reporting(E_ALL ^ E_DEPRECATED);
 // $con =new mysqli("127.0.0.1","root","Hulj@123456","hospital");
 // //mysqli_select_db ( $con, 'hospital' );
@@ -17,7 +17,7 @@
 
 $con = mysqli_connect("127.0.0.1","root","Hulj@123456","hospital");
 mysqli_query($con,"set names utf8") ;
-error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
+//error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
 
 function query($sql){
 	$data = mysqli_query($sql);

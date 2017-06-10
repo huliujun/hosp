@@ -3,36 +3,36 @@
 //ini_set("display_errors", "On");
 //error_reporting(E_ALL | E_STRICT);
 //error_reporting(E_ALL ^ E_DEPRECATED);
-$con =new mysqli("127.0.0.1","root","Hulj@123456","hospital");
-//mysqli_select_db ( $con, 'hospital' );
-mysqli_query($con,'set names utf8');
+// $con =new mysqli("127.0.0.1","root","Hulj@123456","hospital");
+// //mysqli_select_db ( $con, 'hospital' );
+// mysqli_query($con,'set names utf8');
+// error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
+
+// function query($sql){
+// $con = $GLOBALS['con'];
+// $data = $con->query($sql);
+// $rows=mysqli_num_rows($data);
+// for($i=0; $i < $rows; $i++){
+// 		$value_array[]=$data->fetch_array(MYSQLI_ASSOC);
+// 	}
+//     //$row = $result->fetch_array();
+//    return $value_array;
+// }
+
+$con = mysqli_connect("127.0.0.1","root","Hulj@123456","hospital");
+mysqli_query($con,"set names utf8") ;
 error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
 
 function query($sql){
-$con = $GLOBALS['con'];
-$data = $con->query($sql);
-$rows=mysqli_num_rows($data);
-for($i=0; $i < $rows; $i++){
-		$value_array[]=$data->fetch_array(MYSQLI_ASSOC);
+	$con = $GLOBALS['con'];
+	$data = mysqli_query($con,$sql);
+	$rows=mysqli_num_rows($data);
+	for($i=0; $i < $rows; $i++){
+		$value_array[]=mysqli_fetch_array($data,MYSQLI_ASSOC);
 	}
-    //$row = $result->fetch_array();
-   return $value_array;
+	return $value_array;
+
 }
-
-// $con = mysqli_connect("127.0.0.1","root","Hulj@123456","hospital");
-// mysqli_query($con,"set names utf8") ;
-// //error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
-
-// function query($sql){
-// 	$data = mysqli_query($con,$sql);
-// 	$rows=mysqli_num_rows($data);
-// 	//$value_array = [];
-// 	for($i=0; $i < $rows; $i++){
-// 		$value_array[]=mysqli_fetch_array($data,MYSQL_ASSOC);
-// 	}
-// 	return $value_array;
-
-// }
 
 
 

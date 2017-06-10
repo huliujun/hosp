@@ -70,7 +70,7 @@ if (strlen($search)>=15){
     $sql = "select * from hospital.report where `no`='".$search."'";
 }
 
-$data = query($sql);
+$data = query($sql)[0];
 
 //var_dump($data);
 $id = !empty($data)?(int)$data['id']:0;
@@ -173,7 +173,7 @@ if (strlen($search)<12)
 	$searchid=$search;
 
 $exam = query("select * from sheet_report where `dian_no` = '$searchid'");
-var_dump($exam);
+
 if ($exam){
     foreach ($exam as $item) {
         $project_arr[$item['project_no']]=$item;

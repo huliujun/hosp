@@ -1,21 +1,18 @@
 <?php
-
-error_reporting(E_ALL ^ E_DEPRECATED);
-if(!mysql_connect("127.0.0.1","root","hljhlp"))
-	mysql_die(mysql_error()) ;
-mysql_select_db("hospital") ;
-mysql_query("set names utf8") ;
+//public $con;
+//ini_set("display_errors", "On");
+  //  error_reporting(E_ALL | E_STRICT);
+//error_reporting(E_ALL ^ E_DEPRECATED);
+$con =new mysqli("127.0.0.1","root","Hulj@123456","hospital");
+//mysqli_select_db ( $con, 'hospital' );
+mysqli_query($con,'set names utf8');
 error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
 
 function query($sql){
-	$data = mysql_query($sql);
-	$rows=mysql_num_rows($data);
-	//$value_array = [];
-	for($i=0; $i < $rows; $i++){
-		$value_array[]=mysql_fetch_array($data,MYSQL_ASSOC);
-	}
-	return $value_array;
-
+$con = $GLOBALS['con'];
+$result = $con->query($sql);
+    $row = $result->fetch_assoc();
+   return $row;
 }
 
 

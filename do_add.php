@@ -203,13 +203,13 @@ $update = "update `report` set `no`= '$no',
 `add_user`='$add_user',
 `report_user`='$report_user'
  where `id` = ".$_POST['id'];
-
+$con = $GLOBALS['con'];
 if ($_POST['mod_id']=='update'){
-	 mysql_query($update) or die(mysql_error());
+$result = $con->query($update);
 	echo 1;
 }
 else{
-	 mysql_query($insert) or die(mysql_error());
+$result = $con->query($insert);
 	echo 2;
 }
 ?>

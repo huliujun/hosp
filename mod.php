@@ -35,7 +35,7 @@ $id = isset($_POST['id'])?$_POST['id']:'';
 if ($id!=null){
 	$sql = "select * from hospital.report where `id`= '$id'";
 
-	$data = query($sql)[0];
+	$data = query($sql);
 }else
 	$data = [];
 

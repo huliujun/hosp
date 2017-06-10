@@ -70,9 +70,9 @@ if (strlen($search)>=15){
     $sql = "select * from hospital.report where `no`='".$search."'";
 }
 
-$data = query($sql)[0];
+$data = query($sql);
 
-
+//var_dump($data);
 $id = !empty($data)?(int)$data['id']:0;
 $abdomen_baokuai=!empty($data)?(int)$data['abdomen_baokuai']:0;
 $abdomen_liver=!empty($data)?(int)$data['abdomen_liver']:0;

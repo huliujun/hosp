@@ -7,7 +7,7 @@
  */
 include(dirname(__FILE__).'/config.php') ;
 
-error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
+//error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
  
 date_default_timezone_set('Asia/ShangHai');
 
@@ -22,7 +22,6 @@ date_default_timezone_set('Asia/ShangHai');
 function excel_get_array($path,$sheet = 0,$echo = false){
     include(dirname(__FILE__).'/PHPExcel.php') ;
     if (!$path) {
-
         echo iconv("GB2312","UTF-8",'<script>alert("文件错误");location.href="./index.php";</script>');
         exit;
     }
@@ -68,7 +67,7 @@ function excel_get_array($path,$sheet = 0,$echo = false){
 
 // Check prerequisites
 
-//var_dump($_FILES);
+//var_dump($_FILES);die;
 $arr = excel_get_array($_FILES,0,0);
 array_shift($arr);
 //var_dump($arr);die;
@@ -88,10 +87,10 @@ foreach ($arr as $key=>$val){
     $insert .= $str.'),';
 }
 $insert = substr($insert,0,-1);
-
-$res = mysql_query($insert) or die(mysql_error().$insert);
+$con = $GLOBALS['con'];
+$res = $con->query($insert);
 if ($res==1){
-	mysql_query("insert into report (`no`) select distinct dian_no as `no` from sheet_report where dian_no not in (select distinct `no` from report)");
+	$con->query("insert into report (`no`) select distinct dian_no as `no` from sheet_report where dian_no not in (select distinct `no` from report)");
 	echo iconv("GB2312","UTF-8",'<script>alert("导入成功");location.href="./index.php";</script>');
 	
 }

@@ -13,7 +13,7 @@ $con = $GLOBALS['con'];
 $data = $con->query($sql);
 $rows=mysqli_num_rows($data);
 for($i=0; $i < $rows; $i++){
-		$value_array[]=$data->fetch_array(MYSQL_ASSOC);
+		$value_array[]=$data->fetch_array(MYSQLI_ASSOC);
 	}
     //$row = $result->fetch_array();
    return $value_array;

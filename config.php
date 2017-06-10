@@ -20,7 +20,7 @@ mysqli_query($con,"set names utf8") ;
 //error_reporting(E_ALL ^ E_NOTICE ^E_WARNING);
 
 function query($sql){
-	$data = mysqli_query($sql);
+	$data = mysqli_query($con,$sql);
 	$rows=mysqli_num_rows($data);
 	//$value_array = [];
 	for($i=0; $i < $rows; $i++){

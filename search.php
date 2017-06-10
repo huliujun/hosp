@@ -173,7 +173,7 @@ if (strlen($search)<12)
 	$searchid=$search;
 
 $exam = query("select * from sheet_report where `dian_no` = '$searchid'");
-
+var_dump($exam);
 if ($exam){
     foreach ($exam as $item) {
         $project_arr[$item['project_no']]=$item;
